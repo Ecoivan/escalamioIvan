@@ -26,16 +26,16 @@
  *
  */
 'use strict';
-moduloTipousuario.controller('TipousuarioSelectionController', ['$scope', '$uibModalInstance', '$routeParams', 'serverService', '$location', 'sharedSpaceService',
+moduloProducto.controller('ProductoSelectionController', ['$scope', '$uibModalInstance', '$routeParams', 'serverService', '$location', 'sharedSpaceService',
     function ($scope, $modalInstance, $routeParams, serverService, $location, sharedSpaceService) {
         $scope.Fields = [
             {name: "id", shortname: "ID", longname: "Identificador", visible: true},
-            {name: "acceso", shortname: "Acceso", longname: "Acceso", visible: true}
-            
+            {name: "codigo", shortname: "Codigo", longname: "Codigo", visible: true},
+            {name: "precio", shortname: "Precio", longname: "Precio", visible: true}
         ];
-        $scope.ob = "tipousuario";
+        $scope.ob = "producto";
         $scope.op = "selection";
-        $scope.title = "Selección de tipousuario";
+        $scope.title = "Selección de producto";
         $scope.icon = "fa-user";
         $scope.numpage = 1;
         $scope.rpp = 10;

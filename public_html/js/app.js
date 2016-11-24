@@ -37,12 +37,10 @@ var escalamio = angular.module('myApp', [
     'Services',
     'Directives',
     'systemControllers',
-    'documentoControllers',
     'productoControllers',
     'facturaControllers',
     'compraControllers',
     'usuarioControllers',
-    'tipodocumentoControllers',
     'tipousuarioControllers',
     'ui.bootstrap',
     'ngSanitize'
@@ -66,23 +64,19 @@ escalamio.config(['$routeProvider', function ($routeProvider) {
         $routeProvider.when('/home', {templateUrl: 'js/system/home.html', controller: 'HomeController'});
         $routeProvider.when('/license', {templateUrl: 'js/system/license.html', controller: 'LicenseController'});
         //------------
-        $routeProvider.when('/documento/view/:id', {templateUrl: 'js/documento/view.html', controller: 'DocumentoViewController'});
-        $routeProvider.when('/documento/new', {templateUrl: 'js/documento/newedit.html', controller: 'DocumentoNewController'});
-        $routeProvider.when('/documento/edit/:id', {templateUrl: 'js/documento/newedit.html', controller: 'DocumentoEditController'});
-        $routeProvider.when('/documento/remove/:id', {templateUrl: 'js/documento/remove.html', controller: 'DocumentoRemoveController'});
-        $routeProvider.when('/documento/plist/:page?/:rpp?', {templateUrl: 'js/documento/plist.html', controller: 'DocumentoPListController'});
-        //------------
         $routeProvider.when('/producto/view/:id', {templateUrl: 'js/producto/view.html', controller: 'ProductoViewController'});
         $routeProvider.when('/producto/new', {templateUrl: 'js/producto/newedit.html', controller: 'ProductoNewController'});
         $routeProvider.when('/producto/edit/:id', {templateUrl: 'js/producto/newedit.html', controller: 'ProductoEditController'});
         $routeProvider.when('/producto/remove/:id', {templateUrl: 'js/producto/remove.html', controller: 'ProductoRemoveController'});
         $routeProvider.when('/producto/plist/:page?/:rpp?', {templateUrl: 'js/producto/plist.html', controller: 'ProductoPListController'});
+        $routeProvider.when('/producto/selection/:page?/:rpp?', {templateUrl: 'js/producto/selection.html', controller: 'ProductoSelectionController'});
         //------------
         $routeProvider.when('/factura/view/:id', {templateUrl: 'js/factura/view.html', controller: 'FacturaViewController'});
         $routeProvider.when('/factura/new', {templateUrl: 'js/factura/newedit.html', controller: 'FacturaNewController'});
         $routeProvider.when('/factura/edit/:id', {templateUrl: 'js/factura/newedit.html', controller: 'FacturaEditController'});
         $routeProvider.when('/factura/remove/:id', {templateUrl: 'js/factura/remove.html', controller: 'FacturaRemoveController'});
         $routeProvider.when('/factura/plist/:page?/:rpp?', {templateUrl: 'js/factura/plist.html', controller: 'FacturaPListController'});
+        $routeProvider.when('/factura/selection/:page?/:rpp?', {templateUrl: 'js/factura/selection.html', controller: 'FacturaSelectionController'});
         //------------
         $routeProvider.when('/compra/view/:id', {templateUrl: 'js/compra/view.html', controller: 'CompraViewController'});
         $routeProvider.when('/compra/new', {templateUrl: 'js/compra/newedit.html', controller: 'CompraNewController'});
@@ -95,13 +89,15 @@ escalamio.config(['$routeProvider', function ($routeProvider) {
         $routeProvider.when('/usuario/edit/:id', {templateUrl: 'js/usuario/newedit.html', controller: 'UsuarioEditController'});
         $routeProvider.when('/usuario/remove/:id', {templateUrl: 'js/usuario/remove.html', controller: 'UsuarioRemoveController'});
         $routeProvider.when('/usuario/plist/:page?/:rpp?', {templateUrl: 'js/usuario/plist.html', controller: 'UsuarioPListController'});
-        $routeProvider.when('/usuario/selection/:page?/:rpp?', {templateUrl: 'js/tipousuario/selection.html', controller: 'UsuarioSelectionController'});
+        $routeProvider.when('/usuario/selection/:page?/:rpp?', {templateUrl: 'js/usuario/selection.html', controller: 'UsuarioSelectionController'});
+        
         //------------
-        $routeProvider.when('/tipodocumento/view/:id', {templateUrl: 'js/tipodocumento/view.html', controller: 'TipodocumentoViewController'});
-        $routeProvider.when('/tipodocumento/selection/:page?/:rpp?', {templateUrl: 'js/tipodocumento/selection.html', controller: 'TipodocumentoSelectionController'});
-        //------------
-        $routeProvider.when('/tipousuario/selection/:page?/:rpp?', {templateUrl: 'js/tipousuario/selection.html', controller: 'TipousuarioSelectionController'});
         $routeProvider.when('/tipousuario/view/:id', {templateUrl: 'js/tipousuario/view.html', controller: 'TipousuarioViewController'});
+        $routeProvider.when('/tipousuario/new/:id?', {templateUrl: 'js/tipousuario/newedit.html', controller: 'TipousuarioNewController'});
+        $routeProvider.when('/tipousuario/edit/:id', {templateUrl: 'js/tipousuario/newedit.html', controller: 'TipousuarioEditController'});
+        $routeProvider.when('/tipousuario/remove/:id', {templateUrl: 'js/tipousuario/remove.html', controller: 'TipousuarioRemoveController'});
+        $routeProvider.when('/tipousuario/plist/:page?/:rpp?', {templateUrl: 'js/tipousuario/plist.html', controller: 'TipousuarioPListController'});
+        $routeProvider.when('/tipousuario/selection/:page?/:rpp?', {templateUrl: 'js/tipousuario/selection.html', controller: 'TipousuarioSelectionController'});
       
         //------------
         $routeProvider.otherwise({redirectTo: '/'});
@@ -143,11 +139,9 @@ escalamio.run(function ($rootScope, $location, serverService, sessionService) {
 
 var moduloSistema = angular.module('systemControllers', []);
 var moduloUsuario = angular.module('usuarioControllers', []);
-var moduloDocumento = angular.module('documentoControllers', []);
 var moduloProducto = angular.module('productoControllers', []);
 var moduloFactura = angular.module('facturaControllers', []);
 var moduloCompra = angular.module('compraControllers', []);
-var moduloTipodocumento = angular.module('tipodocumentoControllers', []);
 var moduloTipousuario = angular.module('tipousuarioControllers', []);
 
 var moduloDirectivas = angular.module('Directives', []);

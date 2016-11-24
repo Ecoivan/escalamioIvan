@@ -27,13 +27,12 @@
  */
 'use strict';
 
-
-moduloUsuario.controller('TipodocumentoViewpopController', ['$scope', '$routeParams', 'serverService', '$location', '$uibModalInstance', 'id',
+moduloTipousuario.controller('TipousuarioViewpopController', ['$scope', '$routeParams', 'serverService', '$location', '$uibModalInstance', 'id',
     function ($scope, $routeParams, serverService, $location, $uibModalInstance, id) {
         $scope.status = null;
-        $scope.title = "Vista de tipo de documento";
+        $scope.title = "Vista de tipousuario";
         $scope.icon = "fa-file-text-o";
-        $scope.ob = 'tipodocumento';
+        $scope.ob = 'tipousuario';
         $scope.id = id;
         serverService.promise_getOne($scope.ob, $scope.id).then(function (response) {
             if (response.status == 200) {
@@ -52,5 +51,4 @@ moduloUsuario.controller('TipodocumentoViewpopController', ['$scope', '$routePar
         $scope.cancel = function () {
             $uibModalInstance.dismiss('cancel');
         }
-
     }]);

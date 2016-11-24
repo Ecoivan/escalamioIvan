@@ -46,6 +46,22 @@ moduloDirectivas
                     obj: "=source"
                 }
             }
+        }).directive('linkfactura', function () {
+            return {
+                restrict: 'E',
+                template: '<a ng-show="obj.id" href="#/factura/view/{{obj.id}}">{{obj.id}} - {{obj.fecha}}</a>',
+                scope: {
+                    obj: "=source"
+                }
+            }
+        }).directive('linkproducto', function () {
+            return {
+                restrict: 'E',
+                template: '<a ng-show="obj.id" href="#/producto/view/{{obj.id}}">{{obj.id}} - {{obj.codigo}}</a>',
+                scope: {
+                    obj: "=source"
+                }
+            }
         })
         .directive('linktipodocumento', function () {
             return {

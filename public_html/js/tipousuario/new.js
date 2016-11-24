@@ -27,20 +27,18 @@
  */
 
 'use strict';
-moduloDocumento.controller('DocumentoNewController', ['$scope', '$routeParams', '$location', 'serverService', 'sharedSpaceService', '$filter', '$uibModal',
+moduloTipousuario.controller('TipousuarioNewController', ['$scope', '$routeParams', '$location', 'serverService', 'sharedSpaceService', '$filter', '$uibModal',
     function ($scope, $routeParams, $location, serverService, sharedSpaceService, $filter, $uibModal) {
 
-        $scope.ob = 'documento';
+        $scope.ob = 'tipousuario';
         $scope.op = 'new';
 
-        $scope.title = "Creación de un nuevo documento";
+        $scope.title = "Creación de un nuevo tipousuario";
         $scope.icon = "fa-file-text-o";
 
         $scope.result = null;
 
         $scope.obj = {};
-        $scope.obj.obj_tipodocumento = {"id": 0};
-        $scope.obj.obj_usuario = {"id": 0};
 
 
         if ($routeParams.id_usuario) {
@@ -105,7 +103,7 @@ moduloDocumento.controller('DocumentoNewController', ['$scope', '$routeParams', 
             $location.path('/home');
         };
         $scope.plist = function () {
-            $location.path('/documento/plist');
+            $location.path('/producto/plist');
         };
 
         //datepicker 1

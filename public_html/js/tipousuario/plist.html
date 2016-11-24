@@ -137,21 +137,12 @@ THE SOFTWARE.
                                             -->
                                             <tr ng-repeat="obj in page| filter:searchText">
                                                 <td ng-show="Fields[0].visible"  class="text-right">{{obj.id}}</td>
-                                                <td ng-show="Fields[1].visible">{{obj.titulo}}</td>
-                                                <td ng-show="Fields[2].visible">{{obj.contenido| clipString}}</td>
-                                                <td ng-show="Fields[3].visible">{{obj.alta}}</td>
-                                                <td ng-show="Fields[4].visible">{{obj.cambio}}</td>
-                                                <td ng-show="Fields[5].visible" class="text-right">{{obj.hits}}</td>
-                                                <td ng-show="Fields[6].visible"><a ng-click="viewOne(obj.obj_usuario.id, 'usuario', 'UsuarioViewpopController')">{{obj.obj_usuario.id}} - {{obj.obj_usuario.nombre + " " + obj.obj_usuario.apellidos}}</a></td>
-                                                <td ng-show="Fields[7].visible"><a ng-click="viewOne(obj.obj_tipodocumento.id, 'tipodocumento', 'TipodocumentoViewpopController')">{{obj.obj_tipodocumento.id}} - {{obj.obj_tipodocumento.descripcion}}</a></td>
-                                                <td ng-show="Fields[8].visible">{{obj.etiquetas}}</td>
-                                                <td ng-show="Fields[9].visible" class="text-center" ng-bind-html="obj.publicado | booleanizate"></td>
-                                                <td ng-show="Fields[10].visible" class="text-center" ng-bind-html="obj.portada | booleanizate"></td>
-                                                <td ng-show="Fields[11].visible" class="text-center" ng-bind-html="obj.destacado | booleanizate"></td>
+                                                <td ng-show="Fields[1].visible">{{obj.acceso}}</td>
+                                                
                                                 <td>
                                                     <div class="btn-toolbar" role="toolbar">
                                                         <div class="btn-group">
-                                                            <a class="btn btn-default btn-xs" ng-click="viewOne(obj.id, 'documento', 'DocumentoViewpopController')">
+                                                            <a class="btn btn-default btn-xs" ng-click="viewOne(obj.id, 'tipousuario', 'TipousuarioViewpopController')">
                                                                 <span class="fa fa-file-o"></span>
                                                             </a>
                                                             <a class="btn btn-default btn-xs" href="#/{{ob}}/view/{{obj.id}}">

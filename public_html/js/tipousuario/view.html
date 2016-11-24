@@ -44,13 +44,15 @@ THE SOFTWARE.
                                     </thead>
                                     <tbody>
                                         <tr><td>id</td><td>{{bean.id}}</td></tr>       
-                                        <tr><td>descripcion</td><td>{{bean.descripcion}}</td></tr>       
+                                        <tr><td>acceso</td><td>{{bean.acceso}}</td></tr> 
+                                        
+                                        
                                     </tbody>
                                 </table>  
                                 <div class="text-right" > 
-                                    <a class="btn btn-primary" href="#/documento/edit/{{bean.id}}">Editar</a>
-                                    <a class="btn btn-danger" href="#/documento/remove/{{bean.id}}">Borrar</a>
-                                    <a class="btn btn-default" ng-click="plist()">Ir al listado de documentos</a>
+                                    <a class="btn btn-primary" href="#/tipousuario/edit/{{bean.id}}">Editar</a>
+                                    <a class="btn btn-danger" href="#/tipousuario/remove/{{bean.id}}">Borrar</a>
+                                    <a class="btn btn-default" ng-click="plist()">Ir al listado de Tiposusuario</a>
                                     <a class="btn btn-default" ng-click="close()">Cerrar</a>
                                 </div>
                             </div>
@@ -62,4 +64,3 @@ THE SOFTWARE.
         </div>
     </div>     
 </div>
-

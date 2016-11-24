@@ -27,18 +27,14 @@
  */
 'use strict';
 
-
-
-
-
-moduloTipousuario.controller('TipousuarioViewController', ['$scope', '$routeParams', 'serverService','$location',
-    function ($scope, $routeParams, serverService,$location) {
-        $scope.title = "Vista de tipo de usuario";
-        $scope.icon = "fa-male";
+moduloTipousuario.controller('TipousuarioViewController', ['$scope', '$routeParams', 'serverService', '$location',
+    function ($scope, $routeParams, serverService, $location) {
+        $scope.title = "Vista de tipousuario";
+        $scope.icon = "fa-file-text-o";
         $scope.ob = 'tipousuario';
         $scope.id = $routeParams.id;
-        serverService.getDataFromPromise(serverService.promise_getOne($scope.ob, $scope.id)).then(function (data) {
-            $scope.bean = data.message;
+        serverService.promise_getOne($scope.ob, $scope.id).then(function (response) {
+            $scope.bean = response.data.message;
         });
         $scope.close = function () {
             $location.path('/home');

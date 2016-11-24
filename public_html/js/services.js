@@ -287,16 +287,16 @@ angular.module('Services', [])
                     $http.defaults.headers.put['Content-Type'] = 'application/json;charset=utf-8';
                     return $http.get(this.getAppUrl() + '?ob=' + strClass + '&op=set', {params: jsonfile});
                 },
-//                getDataFromPromise: function (promise) {
-//                    return promise.then(function (result) {
-//                        return result.data;
-//                    });
-//                },
-//                get: function (objeto, numero) {
-//                    return $http.get('/' + this.appName + '/json' + objeto + '/' + numero + '/get.json').then(function (result) {
-//                        return result.data;
-//                    });
-//                },
+                getDataFromPromise: function (promise) {
+                    return promise.then(function (result) {
+                        return result.data;
+                   });
+               },
+               get: function (objeto, numero) {
+                    return $http.get('/' + this.appName + '/json' + objeto + '/' + numero + '/get.json').then(function (result) {
+                        return result.data;
+                    });
+                },
                 getPage: function (objeto, pagina, order, ordervalue, rpp, filter, filteroperator, filtervalue, systemfilter, systemfilteroperator, systemfiltervalue) {
                     var orderParams = getOrder(order, ordervalue);
                     var filterParams = getFilter(filter, filteroperator, filtervalue);

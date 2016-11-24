@@ -69,7 +69,7 @@ moduloUsuario.controller('UsuarioNewController', ['$scope', '$routeParams', '$lo
 
         $scope.$watch('obj.obj_tipo_usuario.id', function () {
             if ($scope.obj) {
-                serverService.promise_getOne('tipo_usuario', $scope.obj.obj_tipo_usuario.id).then(function (response) {
+                serverService.promise_getOne('tipousuario', $scope.obj.obj_tipo_usuario.id).then(function (response) {
                     var old_id = $scope.obj.obj_tipo_usuario.id;
                     $scope.obj.obj_tipo_usuario = response.data.message;
                     if (response.data.message.id != 0) {
@@ -123,7 +123,7 @@ moduloUsuario.controller('UsuarioNewController', ['$scope', '$routeParams', '$lo
                 controller: contollerName,
                 size: 'lg'
             }).result.then(function (modalResult) {
-                $scope.obj.obj_usuario.id = modalResult;
+                $scope.obj.obj_tipo_usuario.id = modalResult;
             });
         };
 

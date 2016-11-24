@@ -26,16 +26,20 @@
  *
  */
 'use strict';
-moduloTipousuario.controller('TipousuarioSelectionController', ['$scope', '$uibModalInstance', '$routeParams', 'serverService', '$location', 'sharedSpaceService',
+moduloUsuario.controller('UsuarioSelectionController', ['$scope', '$uibModalInstance', '$routeParams', 'serverService', '$location', 'sharedSpaceService',
     function ($scope, $modalInstance, $routeParams, serverService, $location, sharedSpaceService) {
         $scope.Fields = [
             {name: "id", shortname: "ID", longname: "Identificador", visible: true},
-            {name: "acceso", shortname: "Acceso", longname: "Acceso", visible: true}
-            
+            {name: "nombre", shortname: "Nombre", longname: "Nombre", visible: true},
+            {name: "apellido1", shortname: "Apellido1", longname: "Primer apellido", visible: true},
+            {name: "apellido2", shortname: "Apellido2", longname: "Segudno apellido", visible: true},
+            {name: "dni", shortname: "dni", longname: "dni", visible: true},
+            {name: "login", shortname: "login", longname: "login", visible: true},
+            {name: "password", shortname: "password", longname: "password", visible: true}
         ];
-        $scope.ob = "tipousuario";
+        $scope.ob = "usuario";
         $scope.op = "selection";
-        $scope.title = "Selección de tipousuario";
+        $scope.title = "Selección de usuario";
         $scope.icon = "fa-user";
         $scope.numpage = 1;
         $scope.rpp = 10;

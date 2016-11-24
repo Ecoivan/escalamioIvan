@@ -1,0 +1,109 @@
+<!--
+Copyright (c) 2015 by Rafael Angel Aznar Aparici (rafaaznar at gmail dot com)
+
+escalamio: The stunning micro-library that helps you to develop easily
+            AJAX web applications by using Angular.js 1.x & zylkanexy
+escalamio is distributed under the MIT License (MIT)
+Sources at https://github.com/rafaelaznar/
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.
+
+-->
+<div id="wrapper">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading" style="font-family:Oswald , serif;"  ng-include="'js/system/header.html'"></div>
+                    <div class="panel-body" ng-cloak>
+                        <form name="outerForm" class="form-horizontal" ng-show="result == null">
+                            
+                            <div id="id-group" class="form-group">
+                                <label class="col-sm-2 control-label" for="id">Identificador:</label>
+                                <div class="control col-sm-3">
+                                    <input ng-model="obj.id" type="text" id="id" class="form-control" name="id" size="15" placeholder="id" disabled="disabled">
+                                </div>
+                            </div>
+                            
+                            
+                            <div id="acceso-group" class="form-group" 
+                                 ng-class="{'has-error': (
+                                             outerForm.acceso.$error.required
+                                             ) 
+                                             && !outerForm.acceso.$pristine}">
+                                <label class="col-sm-2 control-label" for="acceso">Acceso:</label>
+                                <div class="control col-sm-8">
+                                    <input ng-model="obj.acceso"
+                                           type="text"
+                                           id="acceso"
+                                           class="form-control"
+                                           name="acceso"
+                                           
+                                           placeholder="acceso"
+                                           
+                                           required>
+                                    <span class="help-block" ng-show="!outerForm.acceso.$pristine && outerForm.acceso.$error.required">El campo acceso es obligatorio</span>
+                                    <span class="help-block" ng-show="!outerForm.acceso.$pristine && outerForm.acceso.$error.minlength">El campo acceso debe tener al menos 10 caracteres</span>
+                                    <span class="help-block" ng-show="!outerForm.acceso.$pristine && outerForm.acceso.$error.maxlength">El campo acceso debe tener como máximo 200 caracteres</span>
+                                </div>
+                            </div>
+                            
+                            
+
+                            <div class="control-group text-right">
+                                <div class="controls">
+                                    <a class="btn btn-primary" ng-click="save()" ng-disabled="!outerForm.$valid">Guardar</a>
+                                    <a class="btn btn-default" ng-click="plist()">Ir al listado de tipousuario</a>
+                                    <a class="btn btn-default" ng-click="close()">Cerrar</a>
+                                </div>
+                            </div>
+                            </form>        
+                        
+                            <div ng-show="result != null">
+                                <div class="alert alert-success" ng-show="result.status == 200">
+                                    
+                                    <div ng-show="op == 'edit'">
+                                        <h2>Se ha modificado el registro</h2>
+                                        <a ng-href="#/producto/view/{{id}}">Ver el registro modificado</a>
+                                    </div>
+                                    <div ng-show="op == 'new'">
+                                        <h2>Se ha creado el registro con id={{result.message}}</h2>
+                                        <a ng-href="#/producto/view/{{result.message}}">Ver el registro creado</a>
+                                    </div>                        
+                                </div>
+                                <div class="alert alert-danger" ng-show="result.status != 200">
+                                    <div ng-show="op == 'edit'">
+                                        <h2>Error al modificar el producto no se ha modificado el producto</h2>
+                                        <h3>Código: {{result.status}}</h3>
+                                        <h3>Mensaje: {{result.message}}</h3>                
+                                    </div>
+                                    <div ng-show="op == 'new'">
+                                        <h2>Error al crear el tipousuario no se ha creado el tipousuario</h2>
+                                        <h3>Código: {{result.status}}</h3>
+                                        <h3>Mensaje: {{result.message}}</h3>                
+                                    </div>
+                                </div>
+                            </div>
+                    </div>
+                    <div class="panel-footer" style="font-family: Questrial, serif;" ng-include="'js/system/footer.html'"></div>
+                </div>
+            </div>
+        </div>
+    </div>     
+</div>

@@ -45,27 +45,18 @@ THE SOFTWARE.
                                         </thead>
                                         <tbody>
                                             <tr><td>id</td><td>{{bean.id}}</td></tr>       
-                                            <tr><td>titulo</td><td>{{bean.titulo}}</td></tr> 
-                                            <tr><td>contenido</td><td>{{bean.contenido| clipString}}</td></tr> 
-                                            <tr><td>alta</td><td>{{bean.alta}}</td></tr> 
-                                            <tr><td>cambio</td><td>{{bean.cambio}}</td></tr> 
-                                            <tr><td>hits</td><td>{{bean.hits}}</td></tr> 
-                                            <tr><td>etiquetas</td><td>{{bean.etiquetas}}</td></tr> 
+                                            <tr><td>nombre</td><td>{{bean.nombre}}</td></tr> 
+                                            <tr><td>apellido1</td><td>{{bean.apellido1}}</td></tr> 
+                                            <tr><td>apellido2</td><td>{{bean.apellido2}}</td></tr> 
+                                            <tr><td>dni</td><td>{{bean.dni}}</td></tr> 
+                                            <tr><td>login</td><td>{{bean.login}}</td></tr> 
+                                            <tr><td>password</td><td>{{bean.password}}</td></tr> 
                                             <tr>
                                                 <td>usuario</td>
                                                 <td>
-                                                    <a href="#/usuario/view/{{bean.obj_usuario.id}}">{{bean.obj_usuario.login}}</a>
+                                                    <a href="#/tipousuario/view/{{bean.obj_tipo_usuario.id}}">{{bean.obj_tipo_usuario.acceso}}</a>
                                                 </td>
-                                            </tr> 
-                                            <tr>
-                                                <td>tipo de documento</td>
-                                                <td>
-                                                    <a href="#/tipodocumento/view/{{bean.obj_tipodocumento.id}}">{{bean.obj_tipodocumento.descripcion}}</a>
-                                                </td>
-                                            </tr> 
-                                            <tr><td>publicado</td><td>{{bean.publicado}}</td></tr> 
-                                            <tr><td>portada</td><td>{{bean.portada}}</td></tr> 
-                                            <tr><td>destacado</td><td>{{bean.destacado}}</td></tr> 
+                                            </tr>  
                                         </tbody>
                                     </table>  
                                     <div class="text-right" > 

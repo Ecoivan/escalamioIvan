@@ -41,158 +41,13 @@ THE SOFTWARE.
                                 </div>
                             </div>
                             
+                            <div id="cantidad-group" class="form-group">
+                                <label class="col-sm-2 control-label" for="cantidad">Cantidad:</label>
+                                <div class="control col-sm-3">
+                                    <input ng-model="obj.cantidad" type="text" id="cantidad" class="form-control" name="cantidad" placeholder="cantidad">
+                                </div>
+                            </div>
                             
-                            <div id="titulo-group" class="form-group" 
-                                 ng-class="{'has-error': (
-                                             outerForm.titulo.$error.required || 
-                                             outerForm.titulo.$error.minlength ||
-                                             outerForm.titulo.$error.maxlength) 
-                                             && !outerForm.titulo.$pristine}">
-                                <label class="col-sm-2 control-label" for="titulo">Título:</label>
-                                <div class="control col-sm-8">
-                                    <input ng-model="obj.titulo"
-                                           type="text"
-                                           id="titulo"
-                                           class="form-control"
-                                           name="titulo"
-                                           size="15"
-                                           placeholder="titulo"
-                                           minlength="10"
-                                           maxlength="200"
-                                           required>
-                                    <span class="help-block" ng-show="!outerForm.titulo.$pristine && outerForm.titulo.$error.required">El campo titulo es obligatorio</span>
-                                    <span class="help-block" ng-show="!outerForm.titulo.$pristine && outerForm.titulo.$error.minlength">El campo titulo debe tener al menos 10 caracteres</span>
-                                    <span class="help-block" ng-show="!outerForm.titulo.$pristine && outerForm.titulo.$error.maxlength">El campo titulo debe tener como máximo 200 caracteres</span>
-                                </div>
-                            </div>
-
-
-                            <div id="contenido-group" class="form-group" 
-                                 ng-class="{'has-error': (outerForm.contenido.$error.required || outerForm.contenido.$error.minlength) && !outerForm.contenido.$pristine}">
-                                <label class ="col-sm-2 control-label" for="contenido">Contenido:</label>
-                                <div class="control col-sm-9">
-                                    <!-- <input ng-model="obj.contenido" type="text" id="contenido"
-                                           class="form-control" name="contenido" size="15"
-                                           placeholder="contenido">
-                                    -->
-                                    <input ng-model="obj.contenido" 
-                                           type="text" 
-                                           id="contenido"
-                                           class="form-control" 
-                                           name="contenido" 
-                                           size="15"
-                                           placeholder="contenido"
-                                           minlength="10"
-                                           maxlength="200"
-                                           required>
-                                    <span class="help-block" ng-show="!outerForm.contenido.$pristine && outerForm.contenido.$error.required">El campo contenido es obligatorio</span>
-                                    <span class="help-block" ng-show="!outerForm.contenido.$pristine && outerForm.contenido.$error.minlength">El campo contenido debe tener al menos 10 caracteres</span>
-                                    <span class="help-block" ng-show="!outerForm.contenido.$pristine && outerForm.contenido.$error.maxlength">El campo contenido debe tener como máximo 20 caracteres</span>
-                                    <!--
-                                    <div ng-messages="outerForm.contenido.$error">
-                                        <div ng-message="required">You did not enter a field</div>
-                                        <div ng-message="minlength">The value entered is too short</div>
-                                        <div ng-message="maxlength">The value entered is too long</div>
-                                    </div>
-                                    -->
-                                </div>
-
-
-
-                            </div>
-
-                            <div id="alta-group" class="form-group" 
-                                 ng-class="{'has-error': (outerForm.alta.$error.required
-                                                     || !obj.alta)
-                                                     && !outerForm.alta.$pristine}">
-                                <label class="col-sm-2 control-label" for="alta">Fecha de modificación:</label>
-                                <div class="control col-sm-3">
-                                    <div class="input-group date" id="alta_group">
-                                        <input type="text" 
-                                               class="form-control" 
-                                               placeholder="Fecha de último alta"
-                                               uib-datepicker-popup="dd/MM/yyyy" 
-                                               ng-model="obj.alta" 
-                                               is-open="popup1.opened" 
-                                               datepicker-options="dateOptions1" 
-                                               ng-required="true" 
-                                               close-text="Close"
-                                               id="alta"
-                                               name="alta"                                      
-                                               />                               
-                                        <span class="input-group-addon" ng-click="open1()">
-                                            <i class="glyphicon glyphicon-calendar"></i>
-                                        </span>                                        
-                                        <!-- <span class="help-block" ng-show="!outerForm.alta.$pristine && !outerForm.alta.$error.pattern">El campo fecha de alta debe ser una fecha en formato dd/mm/yyyy</span>   -->
-                                    </div>
-                                    <span class="help-block" ng-show="!outerForm.alta.$pristine && outerForm.alta.$error.required">El campo fecha de alta es obligatorio</span>
-                                    <em>{{obj.alta| date:'fullDate' }}</em>
-                                </div>
-                            </div>
-
-
-                            <div id="cambio-group" class="form-group" 
-                                 ng-class="{'has-error': (outerForm.cambio.$error.required
-                                                     || !obj.cambio)
-                                                     && !outerForm.cambio.$pristine}">
-                                <label class="col-sm-2 control-label" for="cambio">Fecha de modificación:</label>
-                                <div class="control col-sm-3">
-                                    <div class="input-group date" id="cambio_group">
-                                        <input type="text" 
-                                               class="form-control" 
-                                               placeholder="Fecha de último cambio"
-                                               uib-datepicker-popup="dd/MM/yyyy" 
-                                               ng-model="obj.cambio" 
-                                               is-open="popup2.opened" 
-                                               datepicker-options="dateOptions2" 
-                                               ng-required="true" 
-                                               close-text="Close"
-                                               id="cambio"
-                                               name="cambio"                                      
-                                               />                               
-                                        <span class="input-group-addon" ng-click="open2()">
-                                            <i class="glyphicon glyphicon-calendar"></i>
-                                        </span>                                        
-                                        <!-- <span class="help-block" ng-show="!outerForm.cambio.$pristine && !outerForm.cambio.$error.pattern">El campo fecha de cambio debe ser una fecha en formato dd/mm/yyyy</span>   -->
-                                    </div>
-                                    <span class="help-block" ng-show="!outerForm.cambio.$pristine && outerForm.cambio.$error.required">El campo fecha de cambio es obligatorio</span>
-                                    <em>{{obj.cambio| date:'fullDate' }}</em>
-                                </div>
-                            </div>
-
-
-                            <div id="hits-group" class="form-group" 
-                                 ng-class="{'has-error': (outerForm.hits.$error.required
-                                                     || outerForm.hits.$error.validatemin
-                                                     || outerForm.hits.$error.validatemax
-                                                     || outerForm.hits.$error.pattern
-                                                     || outerForm.hits.$error.numbersOnly)
-                                                     && !outerForm.hits.$pristine}">
-                                <label class="col-sm-2 control-label" for="hits">Hits:</label>
-                                <div class="control col-sm-3">
-                                    <input type="text" 
-                                           ng-model="obj.hits"                     
-                                           id="hits" 
-                                           class="form-control" 
-                                           name="hits" 
-                                           size="15" 
-                                           placeholder="hits"
-                                           ng-pattern="/^\d+$/"
-                                           numbersOnly
-                                           validatemin="1" 
-                                           validatemax="4000"
-                                           required />
-                                    <span class="help-block" ng-show="!outerForm.hits.$pristine && outerForm.hits.$error.required">El campo contenido es obligatorio</span>
-                                    <span class="help-block" ng-show="!outerForm.hits.$pristine && outerForm.hits.$error.pattern">El campo contenido debe ser un número entero</span>                
-                                    <span class="help-block" ng-show="!outerForm.hits.$pristine && outerForm.hits.$error.validatemin">El campo contenido debe ser un número entero mayor que 0</span>
-                                    <span class="help-block" ng-show="!outerForm.hits.$pristine && outerForm.hits.$error.validatemax">El campo contenido debe ser un número entero menor que 4000</span>
-
-                                </div>
-                            </div>
-
-
-                      
-
                             <div class="form-group" 
                                  ng-class="{'has-error': (outerForm.obj_usuario.$error.required ||
                                                      outerForm.obj_usuario.$error.exists ||
@@ -215,74 +70,60 @@ THE SOFTWARE.
                                     <span class="help-block" ng-show="!outerForm.obj_usuario.$pristine && outerForm.obj_usuario.$error.validatemin">Debes elegir un usuario</span>
                                     <span class="help-block" ng-show="!outerForm.obj_usuario.$pristine && outerForm.obj_usuario.$error.exists">El usuario no existe</span>
                                 </div>
-                            </div>  
-
+                            </div>
+                            
                             <div class="form-group" 
-                                 ng-class="{'has-error': (outerForm.obj_tipodocumento.$error.required ||
-                                                     outerForm.obj_tipodocumento.$error.exists ||
-                                                     outerForm.obj_tipodocumento.$error.validatemin)
-                                                     && !outerForm.obj_tipodocumento.$pristine}">                                                                                                                                   
-                                <label class="col-sm-2 control-label" for="obj_tipodocumento">Tipo de documento:</label>
+                                 ng-class="{'has-error': (outerForm.obj_factura.$error.required ||
+                                                     outerForm.obj_factura.$error.exists ||
+                                                     outerForm.obj_factura.$error.validatemin)
+                                                     && !outerForm.obj_factura.$pristine}"
+                                                            >                                                                                                                                   
+                                <label class="col-sm-2 control-label" for="obj_factura">Factura:</label>
                                 <div class="control col-sm-3">
-                                    <div class="input-group foreign" id="obj_tipodocumento_group">
-                                        <span class="input-group-addon" id="obj_tipodocumento_button" ng-click="chooseOne('tipodocumento')">
+                                    <div class="input-group foreign" id="obj_factura_group">
+                                        <span class="input-group-addon" id="obj_factura_button" ng-click="chooseOne('factura','FacturaSelectionController')">
                                             <span class="glyphicon glyphicon-search">
                                             </span>
-                                        </span>
-                                        <input type="text" ng-model-options="{ debounce: 1000 }" ng-model="obj.obj_tipodocumento.id" validatemin="1"  ng-required="true"  aria-describedby="basic-addon2" class="form-control" id="obj_tipodocumento" name="obj_tipodocumento" size="5" maxlength="5">                                        
+                                        </span>                                        
+                                        <input type="text" ng-model-options="{ debounce: 1000 }" ng-change="obj_factura_change" ng-model="obj.obj_factura.id" validatemin="1" ng-required="true"  aria-describedby="basic-addon2" class="form-control" id="obj_factura" name="obj_factura" size="5" maxlength="5">                                        
                                         <span class="input-group-addon">
-                                            <a href="#/tipodocumento/view/{{obj.obj_tipodocumento.id}}">
-                                                <span>{{obj.obj_tipodocumento.descripcion}}</span>
-                                            </a>
-                                        </span>
+                                            <linkfactura source="obj.obj_factura"></linkfactura>                       
+                                        </span>                                       
                                     </div>
-                                    <span class="help-block" ng-show="!outerForm.obj_tipodocumento.$pristine && outerForm.obj_tipodocumento.$error.required">El campo es obligatorio</span>
-                                    <span class="help-block" ng-show="!outerForm.obj_tipodocumento.$pristine && outerForm.obj_tipodocumento.$error.validatemin">Debes elegir un tipo de documento</span>
-                                    <span class="help-block" ng-show="!outerForm.obj_tipodocumento.$pristine && outerForm.obj_tipodocumento.$error.exists">El tipo de documento no existe</span>
+                                    <span class="help-block" ng-show="!outerForm.obj_factura.$pristine && outerForm.obj_factura.$error.required">El campo es obligatorio</span>
+                                    <span class="help-block" ng-show="!outerForm.obj_factura.$pristine && outerForm.obj_factura.$error.validatemin">Debes elegir una factura</span>
+                                    <span class="help-block" ng-show="!outerForm.obj_factura.$pristine && outerForm.obj_factura.$error.exists">La factura no existe</span>
                                 </div>
                             </div>
-
-
                             
-
-
-                             <div id="etiquetas-group" class="form-group">
-                                <label class="col-sm-2 control-label" for="etiquetas">Etiquetas:</label>
-                                <div class="control col-sm-8">
-                                    <input  ng-model="obj.etiquetas" type="text" id="etiquetas" class="form-control" name="etiquetas" size="15" placeholder="etiquetas">
+                            <div class="form-group" 
+                                 ng-class="{'has-error': (outerForm.obj_producto.$error.required ||
+                                                     outerForm.obj_producto.$error.exists ||
+                                                     outerForm.obj_producto.$error.validatemin)
+                                                     && !outerForm.obj_producto.$pristine}"
+                                                             >                                                                                                                                   
+                                <label class="col-sm-2 control-label" for="obj_producto">Producto:</label>
+                                <div class="control col-sm-3">
+                                    <div class="input-group foreign" id="obj_producto_group">
+                                        <span class="input-group-addon" id="obj_producto_button" ng-click="chooseOne('producto','ProductoSelectionController')">
+                                            <span class="glyphicon glyphicon-search">
+                                            </span>
+                                        </span>                                        
+                                        <input type="text" ng-model-options="{ debounce: 1000 }" ng-change="obj_producto_change" ng-model="obj.obj_producto.id" validatemin="1" ng-required="true"  aria-describedby="basic-addon2" class="form-control" id="obj_producto" name="obj_producto" size="5" maxlength="5">                                        
+                                        <span class="input-group-addon">
+                                            <linkproducto source="obj.obj_producto"></linkproducto>                       
+                                        </span>                                       
+                                    </div>
+                                    <span class="help-block" ng-show="!outerForm.obj_producto.$pristine && outerForm.obj_producto.$error.required">El campo es obligatorio</span>
+                                    <span class="help-block" ng-show="!outerForm.obj_producto.$pristine && outerForm.obj_producto.$error.validatemin">Debes elegir un producto</span>
+                                    <span class="help-block" ng-show="!outerForm.obj_producto.$pristine && outerForm.obj_producto.$error.exists">El producto no existe</span>
                                 </div>
                             </div>
-
-
-                            <div id="publicado-group" class="form-group">
-                                <label class="col-sm-2 control-label" for="publicado">¿Publicado?:</label>
-                                <div class="control col-sm-1">
-                                    <input  ng-model="obj.publicado" type="checkbox" id="publicado" name="publicado" value="true" checked="checked"></div>
-                            </div>
-
-
-                            <div id="portada-group" class="form-group">
-                                <label class="col-sm-2 control-label" for="portada">¿Portada?:</label>
-                                <div class="control col-sm-1">
-                                    <input  ng-model="obj.portada" type="checkbox" id="portada" name="portada" value="true" checked="checked">
-                                </div>
-                            </div>
-
-
-                            <div id="destacado-group" class="form-group">
-                                <label class="col-sm-2 control-label" for="destacado">¿Destacado?:</label>
-                                <div class="control col-sm-1">
-                                    <input  ng-model="obj.destacado" type="checkbox" id="destacado" name="destacado" value="true" checked="checked">
-                                </div>
-                            </div>
-
-
-
 
                             <div class="control-group text-right">
                                 <div class="controls">
                                     <a class="btn btn-primary" ng-click="save()" ng-disabled="!outerForm.$valid">Guardar</a>
-                                    <a class="btn btn-default" ng-click="plist()">Ir al listado de documentos</a>
+                                    <a class="btn btn-default" ng-click="plist()">Ir al listado de compras</a>
                                     <a class="btn btn-default" ng-click="close()">Cerrar</a>
                                 </div>
                             </div>
@@ -302,12 +143,12 @@ THE SOFTWARE.
                                 </div>
                                 <div class="alert alert-danger" ng-show="result.status != 200">
                                     <div ng-show="op == 'edit'">
-                                        <h2>Error al modificar el documento: no se ha modificado el documento</h2>
+                                        <h2>Error al modificar el documento: no se ha modificado la compra</h2>
                                         <h3>Código: {{result.status}}</h3>
                                         <h3>Mensaje: {{result.message}}</h3>                
                                     </div>
                                     <div ng-show="op == 'new'">
-                                        <h2>Error al crear el documento: no se ha creado el documento</h2>
+                                        <h2>Error al crear el documento: no se ha creado la compra</h2>
                                         <h3>Código: {{result.status}}</h3>
                                         <h3>Mensaje: {{result.message}}</h3>                
                                     </div>

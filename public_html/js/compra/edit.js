@@ -27,15 +27,15 @@
  */
 
 'use strict';
-moduloDocumento.controller('DocumentoEditController', ['$scope', '$uibModal', '$routeParams', '$location', 'serverService', 'sharedSpaceService', '$filter',
+moduloCompra.controller('CompraEditController', ['$scope', '$uibModal', '$routeParams', '$location', 'serverService', 'sharedSpaceService', '$filter',
     function ($scope, $uibModal, $routeParams, $location, serverService, sharedSpaceService, $filter) {
         $scope.obj = {};
         $scope.objRaw = null;
         $scope.id = $routeParams.id;
-        $scope.ob = 'documento';
+        $scope.ob = 'compra';
         $scope.op = 'edit';
         $scope.result = null;
-        $scope.title = "Edición de documento";
+        $scope.title = "Edición de compra";
         $scope.icon = "fa-file-text-o";
         if (sharedSpaceService.getFase() == 0) {
             //if we aren't returning from a foreign key election request data from server
@@ -217,7 +217,7 @@ moduloDocumento.controller('DocumentoEditController', ['$scope', '$uibModal', '$
             $location.path('/home');
         };
         $scope.plist = function () {
-            $location.path('/documento/plist');
+            $location.path('/compra/plist');
         };
 
 
