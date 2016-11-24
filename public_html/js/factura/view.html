@@ -44,25 +44,14 @@ THE SOFTWARE.
                                     </thead>
                                     <tbody>
                                         <tr><td>id</td><td>{{bean.id}}</td></tr>       
-                                        <tr><td>nombre</td><td>{{bean.nombre}}</td></tr> 
-                                        <tr><td>apellido1</td><td>{{bean.apellido1}}</td></tr> 
-                                        <tr><td>apellido2</td><td>{{bean.apellido2}}</td></tr> 
-                                        <tr><td>dni</td><td>{{bean.dni}}</td></tr> 
-                                        <tr><td>login</td><td>{{bean.login}}</td></tr>
-                                        <tr><td>password</td><td>{{bean.password}}</td></tr>  
+                                        <tr><td>fecha</td><td>{{bean.fecha}}</td></tr> 
                                         
-                                        <tr>
-                                            <td>tipo de usuario</td>
-                                            <td>
-                                                <a href="#/tipousuario/view/{{bean.obj_tipo_usuario.id}}">{{bean.obj_tipo_usuario.acceso}}</a>
-                                            </td>
-                                        </tr> 
                                     </tbody>
                                 </table>  
                                 <div class="text-right" > 
-                                    <a class="btn btn-primary" href="#/usuario/edit/{{bean.id}}">Editar</a>
-                                    <a class="btn btn-danger" href="#/usuario/remove/{{bean.id}}">Borrar</a>
-                                    <a class="btn btn-default" ng-click="plist()">Ir al listado de usuarios</a>
+                                    <a class="btn btn-primary" href="#/factura/edit/{{bean.id}}">Editar</a>
+                                    <a class="btn btn-danger" href="#/factura/remove/{{bean.id}}">Borrar</a>
+                                    <a class="btn btn-default" ng-click="plist()">Ir al listado de facturas</a>
                                     <a class="btn btn-default" ng-click="close()">Cerrar</a>
                                 </div>
                             </div>

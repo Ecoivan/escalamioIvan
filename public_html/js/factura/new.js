@@ -27,19 +27,18 @@
  */
 
 'use strict';
-moduloUsuario.controller('UsuarioNewController', ['$scope', '$routeParams', '$location', 'serverService', 'sharedSpaceService', '$filter', '$uibModal',
+moduloFactura.controller('FacturaNewController', ['$scope', '$routeParams', '$location', 'serverService', 'sharedSpaceService', '$filter', '$uibModal',
     function ($scope, $routeParams, $location, serverService, sharedSpaceService, $filter, $uibModal) {
 
-        $scope.ob = 'usuario';
+        $scope.ob = 'factura';
         $scope.op = 'new';
 
-        $scope.title = "Creación de un nuevo usuario";
+        $scope.title = "Creación de un nuevo factura";
         $scope.icon = "fa-file-text-o";
 
         $scope.result = null;
 
         $scope.obj = {};
-        $scope.obj.obj_tipo_usuario = {"id": 0};
 
 
         if ($routeParams.id_usuario) {
@@ -57,9 +56,9 @@ moduloUsuario.controller('UsuarioNewController', ['$scope', '$routeParams', '$lo
 
 
         $scope.save = function () {
-            var dateAltaAsString = $filter('date')($scope.obj.alta, "dd/MM/yyyy");
+            var dateFechaAsString = $filter('date')($scope.obj.fecha, "dd/MM/yyyy");
             var dateCambioAsString = $filter('date')($scope.obj.cambio, "dd/MM/yyyy");
-            $scope.obj.alta = dateAltaAsString;
+            $scope.obj.fecha = dateFechaAsString;
             $scope.obj.cambio = dateCambioAsString;
             var jsonToSend = {json: JSON.stringify(serverService.array_identificarArray($scope.obj))};
             serverService.promise_setOne($scope.ob, jsonToSend).then(function (data) {
@@ -67,21 +66,35 @@ moduloUsuario.controller('UsuarioNewController', ['$scope', '$routeParams', '$lo
             });
         };
 
-        $scope.$watch('obj.obj_tipo_usuario.id', function () {
+        $scope.$watch('obj.obj_tipodocumento.id', function () {
             if ($scope.obj) {
-                serverService.promise_getOne('tipo_usuario', $scope.obj.obj_tipo_usuario.id).then(function (response) {
-                    var old_id = $scope.obj.obj_tipo_usuario.id;
-                    $scope.obj.obj_tipo_usuario = response.data.message;
+                serverService.promise_getOne('tipodocumento', $scope.obj.obj_tipodocumento.id).then(function (response) {
+                    var old_id = $scope.obj.obj_tipodocumento.id;
+                    $scope.obj.obj_tipodocumento = response.data.message;
                     if (response.data.message.id != 0) {
-                        $scope.outerForm.obj_tipo_usuario.$setValidity('exists', true);
+                        $scope.outerForm.obj_tipodocumento.$setValidity('exists', true);
                     } else {
-                        $scope.outerForm.obj_tipo_usuario.$setValidity('exists', false);
-                        $scope.obj.obj_tipo_usuario.id = old_id;
+                        $scope.outerForm.obj_tipodocumento.$setValidity('exists', false);
+                        $scope.obj.obj_tipodocumento.id = old_id;
                     }
                 });
             }
         });
 
+        $scope.$watch('obj.obj_usuario.id', function () {
+            if ($scope.obj) {
+                serverService.promise_getOne('usuario', $scope.obj.obj_usuario.id).then(function (response) {
+                    var old_id = $scope.obj.obj_usuario.id;
+                    $scope.obj.obj_usuario = response.data.message;
+                    if (response.data.message.id != 0) {
+                        $scope.outerForm.obj_usuario.$setValidity('exists', true);
+                    } else {
+                        $scope.outerForm.obj_usuario.$setValidity('exists', false);
+                        $scope.obj.obj_usuario.id = old_id;
+                    }
+                });
+            }
+        });
 
         $scope.back = function () {
             window.history.back();
@@ -90,7 +103,7 @@ moduloUsuario.controller('UsuarioNewController', ['$scope', '$routeParams', '$lo
             $location.path('/home');
         };
         $scope.plist = function () {
-            $location.path('/usuario/plist');
+            $location.path('/factura/plist');
         };
 
         //datepicker 1

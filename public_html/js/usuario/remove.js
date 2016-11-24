@@ -25,30 +25,29 @@
  * THE SOFTWARE.
  * 
  */
+
 'use strict';
 
-moduloUsuario.controller('UsuarioViewpopController', ['$scope', '$routeParams', 'serverService', '$location', '$uibModalInstance', 'id',
-    function ($scope, $routeParams, serverService, $location, $uibModalInstance, id) {
-        $scope.status = null;
-        $scope.title = "Vista de usuario";
+moduloDocumento.controller('DocumentoRemoveController', ['$scope', '$routeParams', 'serverService',
+    function ($scope, $routeParams, serverService) {
+        $scope.result = "";
+        $scope.back = function () {
+            window.history.back();
+        };
+        $scope.ob = 'documento';
+        $scope.id = $routeParams.id;
+        $scope.title = "Borrado de un documento";
         $scope.icon = "fa-file-text-o";
-        $scope.ob = 'usuario';
-        $scope.id = id;
-        serverService.promise_getOne($scope.ob, $scope.id).then(function (response) {
-            if (response.status == 200) {
-                if (response.data.status == 200) {
-                    $scope.status = null;
-                    $scope.bean = response.data.message;
-                } else {
-                    $scope.status = "Error en la recepción de datos del servidor";
-                }
-            } else {
-                $scope.status = "Error en la recepción de datos del servidor";
-            }
-        }).catch(function (data) {
-            $scope.status = "Error en la recepción de datos del servidor";
+        serverService.getDataFromPromise(serverService.promise_getOne($scope.ob, $scope.id)).then(function (data) {            
+            $scope.bean = data.message;
         });
-        $scope.cancel = function () {
-            $uibModalInstance.dismiss('cancel');
+
+
+
+        $scope.remove = function () {
+            serverService.getDataFromPromise(serverService.promise_removeOne($scope.ob, $scope.id)).then(function (data) {
+                $scope.result = data;
+            });
         }
+        ;
     }]);

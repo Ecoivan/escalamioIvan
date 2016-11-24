@@ -28,24 +28,18 @@
 
 'use strict';
 
-moduloUsuario.controller('UsuarioPListController', ['$scope', '$routeParams', 'serverService', '$location', '$uibModal',
+moduloFactura.controller('FacturaPListController', ['$scope', '$routeParams', 'serverService', '$location', '$uibModal',
     function ($scope, $routeParams, serverService, $location, $uibModal) {
 
         $scope.Fields = [
             {name: "id", shortname: "ID", longname: "Identificador", visible: true, type: "integer"},
-            {name: "nombre", shortname: "Nombre", longname: "Nombre", visible: true, type: "string"},
-            {name: "apellido1", shortname: "Apellido1", longname: "Apellido1", visible: false, type: "string"},
-            {name: "apellido2", shortname: "Apellido2", longname: "Apellido2", visible: false, type: "string"},
-            {name: "dni", shortname: "Dni", longname: "Dni", visible: false, type: "string"},
-            {name: "login", shortname: "Login", longname: "Login", visible: true, type: "string"},
-            {name: "password", shortname: "Password", longname: "Password", visible: true, type: "string"},
-            {name: "obj_tipo_usuario", shortname: "Tipo", longname: "Tipo de usuario", visible: true, type: "foreign"}
+            {name: "fecha", shortname: "Fecha", longname: "Fecha", visible: true, type: "date"}
             
         ];
 
-        $scope.ob = "usuario";
+        $scope.ob = "factura";
         $scope.op = "plist";
-        $scope.title = "Listado de usuarios";
+        $scope.title = "Listado de factura";
         $scope.icon = "fa-file-text-o";
 
         $scope.numpage = $routeParams.page;

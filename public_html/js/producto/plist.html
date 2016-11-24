@@ -137,17 +137,13 @@ THE SOFTWARE.
                                             -->
                                             <tr ng-repeat="obj in page| filter:searchText">
                                                 <td ng-show="Fields[0].visible"  class="text-right">{{obj.id}}</td>
-                                                <td ng-show="Fields[1].visible">{{obj.nombre}}</td>
-                                                <td ng-show="Fields[2].visible">{{obj.apellido1}}</td>
-                                                <td ng-show="Fields[3].visible">{{obj.apellido2}}</td>
-                                                <td ng-show="Fields[4].visible">{{obj.dni}}</td>
-                                                <td ng-show="Fields[5].visible">{{obj.login}}</td>
-                                                <td ng-show="Fields[6].visible">{{obj.password}}</td>
-                                                <td ng-show="Fields[7].visible"><a ng-click="viewOne(obj.obj_tipo_usuario.id, 'tipousuario', 'TipousuarioViewpopController')">{{obj.obj_tipo_usuario.id}} - {{obj.obj_tipo_usuario.acceso}}</a></td>
+                                                <td ng-show="Fields[1].visible">{{obj.codigo}}</td>
+                                                <td ng-show="Fields[2].visible">{{obj.precio}}</td>
+                                                
                                                 <td>
                                                     <div class="btn-toolbar" role="toolbar">
                                                         <div class="btn-group">
-                                                            <a class="btn btn-default btn-xs" ng-click="viewOne(obj.id, 'usuario', 'UsuarioViewpopController')">
+                                                            <a class="btn btn-default btn-xs" ng-click="viewOne(obj.id, 'producto', 'ProductoViewpopController')">
                                                                 <span class="fa fa-file-o"></span>
                                                             </a>
                                                             <a class="btn btn-default btn-xs" href="#/{{ob}}/view/{{obj.id}}">

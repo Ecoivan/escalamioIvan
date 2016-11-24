@@ -185,7 +185,7 @@ angular.module('Services', [])
 //                    return location.protocol + '//' + location.hostname + ':' + location.port + '/' + this.getAppName();
 //                },
                 getAppUrl: function () {
-                    return "http://localhost:8081/zylkanexy/json";
+                    return "http://localhost:8084/zylkanexy/json";
                     //return location.protocol + '//' + location.hostname + ':' + location.port + '/' + this.getAppName() + '/index.php';
                 },
                 getAppName: function () {

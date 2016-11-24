@@ -27,19 +27,19 @@
  */
 
 'use strict';
-moduloUsuario.controller('UsuarioEditController', ['$scope', '$uibModal', '$routeParams', '$location', 'serverService', 'sharedSpaceService', '$filter',
+moduloDocumento.controller('DocumentoEditController', ['$scope', '$uibModal', '$routeParams', '$location', 'serverService', 'sharedSpaceService', '$filter',
     function ($scope, $uibModal, $routeParams, $location, serverService, sharedSpaceService, $filter) {
         $scope.obj = {};
         $scope.objRaw = null;
         $scope.id = $routeParams.id;
-        $scope.ob = 'usuario';
+        $scope.ob = 'documento';
         $scope.op = 'edit';
         $scope.result = null;
-        $scope.title = "Edición de usuario";
+        $scope.title = "Edición de documento";
         $scope.icon = "fa-file-text-o";
         if (sharedSpaceService.getFase() == 0) {
             //if we aren't returning from a foreign key election request data from server
-            serverService.get('ob=maxi_usuario&page=1&rpp=100&filter[]=id,equa,' + $scope.id).then(function (result) {
+            serverService.get('ob=maxi_documento&page=1&rpp=100&filter[]=id,equa,' + $scope.id).then(function (result) {
                 if (result) {
                     if (result.status == 200) {
                         //pick data from server
@@ -61,13 +61,11 @@ moduloUsuario.controller('UsuarioEditController', ['$scope', '$uibModal', '$rout
                             $scope.obj.publicado = true;
                         else
                             $scope.obj.publicado = false;
-                        $scope.obj.nombre = $scope.objRaw.nombre;
-                        $scope.obj.apellido1 = $scope.objRaw.apellido1;
-                        $scope.obj.apellido2 = $scope.objRaw.apellido2;
-                        $scope.obj.dni = $scope.objRaw.dni;
-                        $scope.obj.login = $scope.objRaw.login;
-                        $scope.obj.password = $scope.objRaw.password;
-                        $scope.obj.tipo_usuario = $scope.objRaw.tipo_usuario;
+                        $scope.obj.titulo = $scope.objRaw.titulo;
+                        $scope.obj.contenido = $scope.objRaw.titulo;
+                        $scope.obj.hits = $scope.objRaw.hits;
+                        $scope.obj.id_usuario = $scope.objRaw.id_usuario;
+                        $scope.obj.id_tipodocumento = $scope.objRaw.id_tipodocumento;
                         $scope.obj.id = $scope.objRaw.id;
                     }
                 } else {
@@ -139,12 +137,12 @@ moduloUsuario.controller('UsuarioEditController', ['$scope', '$uibModal', '$rout
                     neighbourhood: function () {
                         return 2;
                     },
-                    tipo_usuario: function () {
-                        return $scope.tipo_usuario;
+                    id_tipodocumento: function () {
+                        return $scope.id_tipodocumento;
                     }
                 }
             }).result.then(function (modalResult) {
-                $scope.obj.tipo_usuario = modalResult;
+                $scope.obj.id_tipodocumento = modalResult;
                 serverService.get('ob=' + foreignObjectName + '&page=1&rpp=1&filter[]=id,equa,' + modalResult).then(function (result) {
                     if (result) {
                         if (result.status == 200) {
@@ -181,7 +179,7 @@ moduloUsuario.controller('UsuarioEditController', ['$scope', '$uibModal', '$rout
 
             console.log($scope.obj);
 
-            serverService.put('ob=usuario&id=' + $scope.obj.id, JSON.stringify($scope.obj)).then(function (result) {
+            serverService.put('ob=documento&id=' + $scope.obj.id, JSON.stringify($scope.obj)).then(function (result) {
                 if (result) {
                     if (result.status == 200) {
                         $scope.result = result;
@@ -219,7 +217,7 @@ moduloUsuario.controller('UsuarioEditController', ['$scope', '$uibModal', '$rout
             $location.path('/home');
         };
         $scope.plist = function () {
-            $location.path('/usuario/plist');
+            $location.path('/documento/plist');
         };
 
 

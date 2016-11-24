@@ -55,18 +55,27 @@ THE SOFTWARE.
                                 </thead>
                                 <tbody>
                                     <tr><td>id</td><td>{{bean.id}}</td></tr>       
-                                    <tr><td>nombre</td><td>{{bean.nombre}}</td></tr> 
-                                    <tr><td>apellido1</td><td>{{bean.apellido1}}</td></tr> 
-                                    <tr><td>apellido2</td><td>{{bean.apellido2}}</td></tr> 
-                                    <tr><td>dni</td><td>{{bean.dni}}</td></tr> 
-                                    <tr><td>login</td><td>{{bean.login}}</td></tr> 
-                                    <tr><td>password</td><td>{{bean.password}}</td></tr> 
+                                    <tr><td>cantidad</td><td>{{bean.cantidad}}</td></tr> 
+                                    
                                     <tr>
-                                        <td>tipousuario</td>
-                                        <td>
-                                            {{bean.obj_tipo_usuario.id}} - {{bean.obj_tipo_usuario.acceso}}
-                                        </td>
-                                    </tr>  
+                                            <td>usuario</td>
+                                            <td>
+                                                <a href="#/usuario/view/{{bean.obj_usuario.id}}">{{bean.obj_usuario.nombre}}</a>
+                                            </td>
+                                        </tr> 
+                                        <tr>
+                                            <td>factura</td>
+                                            <td>
+                                                <a href="#/factura/view/{{bean.obj_factura.id}}">{{bean.obj_factura.fecha}}</a>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>producto</td>
+                                            <td>
+                                                <a href="#/producto/view/{{bean.obj_producto.id}}">{{bean.obj_producto.codigo}}</a>
+                                            </td>
+                                        </tr> 
+                                    
                                 </tbody>
                             </table>  
                         </div>

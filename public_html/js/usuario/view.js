@@ -25,17 +25,11 @@
  * THE SOFTWARE.
  * 
  */
-
-
 'use strict';
 
-
-
-
-
-moduloUsuario.controller('UsuarioViewController', ['$scope', '$routeParams', 'serverService','$location',
+moduloUsuario.controller('UsuarioViewController', ['$scope', '$routeParams', 'serverService', '$location',
     function ($scope, $routeParams, serverService, $location) {
-  $scope.title = "Vista de usuario";
+        $scope.title = "Vista de usuario";
         $scope.icon = "fa-file-text-o";
         $scope.ob = 'usuario';
         $scope.id = $routeParams.id;

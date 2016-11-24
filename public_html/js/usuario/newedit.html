@@ -1,7 +1,7 @@
 <!--
 Copyright (c) 2015 by Rafael Angel Aznar Aparici (rafaaznar at gmail dot com)
 
-escalamio: The stunning micro-library that helps you to develop easily 
+escalamio: The stunning micro-library that helps you to develop easily
             AJAX web applications by using Angular.js 1.x & zylkanexy
 escalamio is distributed under the MIT License (MIT)
 Sources at https://github.com/rafaelaznar/
@@ -25,7 +25,6 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 
 -->
-
 <div id="wrapper">
     <div class="container-fluid">
         <div class="row">
@@ -34,20 +33,19 @@ THE SOFTWARE.
                     <div class="panel-heading" style="font-family:Oswald , serif;"  ng-include="'js/system/header.html'"></div>
                     <div class="panel-body" ng-cloak>
                         <form name="outerForm" class="form-horizontal" ng-show="result == null">
-
+                            
                             <div id="id-group" class="form-group">
                                 <label class="col-sm-2 control-label" for="id">Identificador:</label>
                                 <div class="control col-sm-3">
                                     <input ng-model="obj.id" type="text" id="id" class="form-control" name="id" size="15" placeholder="id" disabled="disabled">
                                 </div>
                             </div>
-
-
+                            
                             
                             <div id="titulo-group" class="form-group" 
-                                 ng-class="{'has-error': (outerForm.nombre.$error.required || 
-                                             outerForm.nombre.$error.minlength  ||
-                                             outerForm.titulo.$error.maxlength) 
+                                 ng-class="{'has-error': (
+                                             outerForm.nombre.$error.required
+                                             ) 
                                              && !outerForm.nombre.$pristine}">
                                 <label class="col-sm-2 control-label" for="nombre">Nombre:</label>
                                 <div class="control col-sm-8">
@@ -56,128 +54,238 @@ THE SOFTWARE.
                                            id="nombre"
                                            class="form-control"
                                            name="nombre"
-                                           size="15"
-                                           placeholder="nombre del usuario"
-                                           minlength="1"
-                                           maxlength="255"
+                                           
+                                           placeholder="nombre"
+                                           
+                                           
                                            required>
                                     <span class="help-block" ng-show="!outerForm.nombre.$pristine && outerForm.nombre.$error.required">El campo nombre es obligatorio</span>
                                     <span class="help-block" ng-show="!outerForm.nombre.$pristine && outerForm.nombre.$error.minlength">El campo nombre debe tener al menos 10 caracteres</span>
-                                    <span class="help-block" ng-show="!outerForm.nombre.$pristine && outerForm.nombre.$error.maxlength">El campo nombre debe tener como máximo 255 caracteres</span>
-                                </div>
-                            </div>
-                            
-                            
-                            
-                            
-
-                            <div id="apellidos-group" class="form-group">
-                                <label class="col-sm-2 control-label" for="login">Apellidos:</label>
-                                <div class="control col-sm-8">
-                                    <input ng-model="obj.apellidos" type="text" id="apellidos" class="form-control" name="apellidos" size="15" placeholder="apellidos">
-                                </div>
-                            </div>
-
-                            <div id="email-group" class="form-group">
-                                <label class="col-sm-2 control-label" for="login">Email:</label>
-                                <div class="control col-sm-8">
-                                    <input ng-model="obj.email" type="text" id="email" class="form-control" name="email" size="15" placeholder="email">
-                                </div>
-                            </div>
-                            <div id="login-group" class="form-group">
-                                <label class="col-sm-2 control-label" for="login">Login:</label>
-                                <div class="control col-sm-8">
-                                    <input ng-model="obj.login" type="text" id="login" class="form-control" name="login" size="15" placeholder="login">
+                                    <span class="help-block" ng-show="!outerForm.nombre.$pristine && outerForm.nombre.$error.maxlength">El campo nombre debe tener como máximo 200 caracteres</span>
                                 </div>
                             </div>
 
 
-                            <div id="password-group" class="form-group">
-                                <label class="col-sm-2 control-label" for="password">Password:</label>
+                            <div id="contenido-group" class="form-group" 
+                                 ng-class="{'has-error': (outerForm.apellido1.$error.required) && !outerForm.apellido1.$pristine}">
+                                <label class ="col-sm-2 control-label" for="apellido1">Apellido1:</label>
                                 <div class="control col-sm-9">
-                                    <input ng-model="obj.password" type="text" id="password" class="form-control" name="password" size="15" placeholder="password">
+                                    <!-- <input ng-model="obj.contenido" type="text" id="contenido"
+                                           class="form-control" name="contenido" size="15"
+                                           placeholder="contenido">
+                                    -->
+                                    <input ng-model="obj.apellido1" 
+                                           type="text" 
+                                           id="apellido1"
+                                           class="form-control" 
+                                           name="apellido1" 
+                                           
+                                           placeholder="apellido1"
+                                           
+                                           
+                                           required>
+                                    <span class="help-block" ng-show="!outerForm.apellido1.$pristine && outerForm.apellido1.$error.required">El campo apellido1 es obligatorio</span>
+                                    <span class="help-block" ng-show="!outerForm.apellido1.$pristine && outerForm.apellido1.$error.minlength">El campo apellido1 debe tener al menos 10 caracteres</span>
+                                    <span class="help-block" ng-show="!outerForm.apellido1.$pristine && outerForm.apellido1.$error.maxlength">El campo apellido1 debe tener como máximo 20 caracteres</span>
+                                    <!--
+                                    <div ng-messages="outerForm.contenido.$error">
+                                        <div ng-message="required">You did not enter a field</div>
+                                        <div ng-message="minlength">The value entered is too short</div>
+                                        <div ng-message="maxlength">The value entered is too long</div>
+                                    </div>
+                                    -->
                                 </div>
                             </div>
 
+                            
+                            <div id="contenido-group" class="form-group" 
+                                 ng-class="{'has-error': (outerForm.apellido2.$error.required) && !outerForm.apellido2.$pristine}">
+                                <label class ="col-sm-2 control-label" for="apellido2">Apellido2:</label>
+                                <div class="control col-sm-9">
+                                    <!-- <input ng-model="obj.contenido" type="text" id="contenido"
+                                           class="form-control" name="contenido" size="15"
+                                           placeholder="contenido">
+                                    -->
+                                    <input ng-model="obj.apellido2" 
+                                           type="text" 
+                                           id="apellido2"
+                                           class="form-control" 
+                                           name="apellido2" 
+                                           
+                                           placeholder="apellido2"
+                                           
+                                           required>
+                                    <span class="help-block" ng-show="!outerForm.apellido2.$pristine && outerForm.apellido2.$error.required">El campo apellido2 es obligatorio</span>
+                                    <span class="help-block" ng-show="!outerForm.apellido2.$pristine && outerForm.apellido2.$error.minlength">El campo apellido2 debe tener al menos 10 caracteres</span>
+                                    <span class="help-block" ng-show="!outerForm.apellido2.$pristine && outerForm.apellido2.$error.maxlength">El campo apellido2 debe tener como máximo 20 caracteres</span>
+                                    <!--
+                                    <div ng-messages="outerForm.contenido.$error">
+                                        <div ng-message="required">You did not enter a field</div>
+                                        <div ng-message="minlength">The value entered is too short</div>
+                                        <div ng-message="maxlength">The value entered is too long</div>
+                                    </div>
+                                    -->
+                                </div>
+                            </div>                                           
 
-                            <div class="form-group">
-                                <label class="col-sm-2 control-label" for="obj_tipousuario">Tipo de usuario:</label>
+                            <div id="contenido-group" class="form-group" 
+                                 ng-class="{'has-error': (outerForm.dni.$error.required) && !outerForm.dni.$pristine}">
+                                <label class ="col-sm-2 control-label" for="dni">Dni:</label>
+                                <div class="control col-sm-9">
+                                    <!-- <input ng-model="obj.contenido" type="text" id="contenido"
+                                           class="form-control" name="contenido" size="15"
+                                           placeholder="contenido">
+                                    -->
+                                    <input ng-model="obj.dni" 
+                                           type="text" 
+                                           id="dni"
+                                           class="form-control" 
+                                           name="dni" 
+                                           
+                                           placeholder="dni"
+                                           
+                                           required>
+                                    <span class="help-block" ng-show="!outerForm.dni.$pristine && outerForm.dni.$error.required">El campo dni es obligatorio</span>
+                                    <span class="help-block" ng-show="!outerForm.dni.$pristine && outerForm.dni.$error.minlength">El campo dni debe tener al menos 10 caracteres</span>
+                                    <span class="help-block" ng-show="!outerForm.dni.$pristine && outerForm.dni.$error.maxlength">El campo dni debe tener como máximo 20 caracteres</span>
+                                    <!--
+                                    <div ng-messages="outerForm.contenido.$error">
+                                        <div ng-message="required">You did not enter a field</div>
+                                        <div ng-message="minlength">The value entered is too short</div>
+                                        <div ng-message="maxlength">The value entered is too long</div>
+                                    </div>
+                                    -->
+                                </div>
+                            </div>
+                            
+                            <div id="contenido-group" class="form-group" 
+                                 ng-class="{'has-error': (outerForm.login.$error.required) && !outerForm.login.$pristine}">
+                                <label class ="col-sm-2 control-label" for="login">Login:</label>
+                                <div class="control col-sm-9">
+                                    <!-- <input ng-model="obj.contenido" type="text" id="contenido"
+                                           class="form-control" name="contenido" size="15"
+                                           placeholder="contenido">
+                                    -->
+                                    <input ng-model="obj.login" 
+                                           type="text" 
+                                           id="login"
+                                           class="form-control" 
+                                           name="login" 
+                                           
+                                           placeholder="login"
+                                           
+                                           required>
+                                    <span class="help-block" ng-show="!outerForm.login.$pristine && outerForm.login.$error.required">El campo login es obligatorio</span>
+                                    <span class="help-block" ng-show="!outerForm.login.$pristine && outerForm.login.$error.minlength">El campo login debe tener al menos 10 caracteres</span>
+                                    <span class="help-block" ng-show="!outerForm.login.$pristine && outerForm.login.$error.maxlength">El campo login debe tener como máximo 20 caracteres</span>
+                                    <!--
+                                    <div ng-messages="outerForm.contenido.$error">
+                                        <div ng-message="required">You did not enter a field</div>
+                                        <div ng-message="minlength">The value entered is too short</div>
+                                        <div ng-message="maxlength">The value entered is too long</div>
+                                    </div>
+                                    -->
+                                </div>
+                            </div>
+                            
+                            <div id="contenido-group" class="form-group" 
+                                 ng-class="{'has-error': (outerForm.password.$error.required) && !outerForm.password.$pristine}">
+                                <label class ="col-sm-2 control-label" for="password">Password:</label>
+                                <div class="control col-sm-9">
+                                    <!-- <input ng-model="obj.contenido" type="text" id="contenido"
+                                           class="form-control" name="contenido" size="15"
+                                           placeholder="contenido">
+                                    -->
+                                    <input ng-model="obj.password" 
+                                           type="text" 
+                                           id="password"
+                                           class="form-control" 
+                                           name="password" 
+                                           
+                                           placeholder="password"
+                                           
+                                           required>
+                                    <span class="help-block" ng-show="!outerForm.password.$pristine && outerForm.password.$error.required">El campo password es obligatorio</span>
+                                    <span class="help-block" ng-show="!outerForm.password.$pristine && outerForm.password.$error.minlength">El campo password debe tener al menos 10 caracteres</span>
+                                    <span class="help-block" ng-show="!outerForm.password.$pristine && outerForm.password.$error.maxlength">El campo password debe tener como máximo 20 caracteres</span>
+                                    <!--
+                                    <div ng-messages="outerForm.contenido.$error">
+                                        <div ng-message="required">You did not enter a field</div>
+                                        <div ng-message="minlength">The value entered is too short</div>
+                                        <div ng-message="maxlength">The value entered is too long</div>
+                                    </div>
+                                    -->
+                                </div>
+                            </div>  
+
+                            <div class="form-group" 
+                                 ng-class="{'has-error': (outerForm.obj_tipo_usuario.$error.required ||
+                                                     outerForm.obj_tipo_usuario.$error.exists ||
+                                                     outerForm.obj_tipo_usuario.$error.validatemin)
+                                                     && !outerForm.obj_tipo_usuario.$pristine}">                                                                                                                                   
+                                <label class="col-sm-2 control-label" for="obj_tipo_usuario">Tipo de usuario:</label>
                                 <div class="control col-sm-3">
-                                    <div class="input-group foreign" id="obj_tipousuario_group">
-                                        <span class="input-group-addon" id="obj_tipousuario_button">
-                                            <span class="glyphicon glyphicon-search" ng-click="chooseOne('tipousuario')">
+                                    <div class="input-group foreign" id="obj_tipo_usuario_group">
+                                        <span class="input-group-addon" id="obj_tipo_usuario_button" ng-click="chooseOne('tipousuario')">
+                                            <span class="glyphicon glyphicon-search">
                                             </span>
                                         </span>
-                                        <input ng-model="obj.obj_tipousuario.id" readonly="true" aria-describedby="basic-addon2" class="form-control" id="obj_tipousuario" name="obj_tipousuario" type="text" size="5" maxlength="5">
+                                        <input type="text" ng-model-options="{ debounce: 1000 }" ng-model="obj.obj_tipo_usuario.id" validatemin="1"  ng-required="true"  aria-describedby="basic-addon2" class="form-control" id="obj_tipo_usuario" name="obj_tipo_usuario" size="5" maxlength="5">                                        
                                         <span class="input-group-addon">
-                                            <a href="#/tipousuario/view/{{obj.obj_tipousuario.id}}">
-                                                <span>{{obj.obj_tipousuario.descripcion}}</span>     
-                                            </a>       
+                                            <a href="#/tipousuario/view/{{obj.obj_tipo_usuario.id}}">
+                                                <span>{{obj.obj_tipo_usuario.acceso}}</span>
+                                            </a>
                                         </span>
                                     </div>
-                                </div>            
-                            </div>
-
-
-
-                            <div class="form-group">
-                                <label class="col-sm-2 control-label" for="obj_estado">Estado del usuario:</label>
-                                <div class="control col-sm-3">
-                                    <div class="input-group foreign" id="obj_estado_group">
-                                        <span class="input-group-addon" id="obj_estado_button">
-                                            <span class="glyphicon glyphicon-search" ng-click="chooseOne('estado')">
-                                            </span>
-                                        </span>
-                                        <input ng-model="obj.obj_estado.id" readonly="true" aria-describedby="basic-addon2" class="form-control" id="obj_estado" name="obj_estado" type="text" size="5" maxlength="5">
-                                        <span class="input-group-addon">
-                                            <a href="#/estado/view/{{obj.obj_estado.id}}">
-                                                <span>{{obj.obj_estado.tipo}}</span>     
-                                            </a>       
-                                        </span>
-                                    </div>
-                                </div>            
-                            </div>
-
-                            <div id="ciudad-group" class="form-group">
-                                <label class="col-sm-2 control-label" for="ciudad">Ciudad:</label>
-                                <div class="control col-sm-9">
-                                    <input ng-model="obj.ciudad" type="text" id="ciudad" class="form-control" name="ciudad" size="15" placeholder="ciudad">
+                                    <span class="help-block" ng-show="!outerForm.obj_tipo_usuario.$pristine && outerForm.obj_tipo_usuario.$error.required">El campo es obligatorio</span>
+                                    <span class="help-block" ng-show="!outerForm.obj_tipo_usuario.$pristine && outerForm.obj_tipo_usuario.$error.validatemin">Debes elegir un tipo de usuario</span>
+                                    <span class="help-block" ng-show="!outerForm.obj_tipo_usuario.$pristine && outerForm.obj_tipo_usuario.$error.exists">El tipo de usuario no existe</span>
                                 </div>
                             </div>
 
-                            <div id="firma-group" class="form-group">
-                                <label class="col-sm-2 control-label" for="firma">Firma:</label>
-                                <div class="control col-sm-9">
-                                    <input ng-model="obj.firma" type="text" id="firma" class="form-control" name="firma" size="15" placeholder="firma">
-                                </div>
-                            </div>
 
-                            <div id="skin-group" class="form-group">
-                                <label class="col-sm-2 control-label" for="skin">Skin:</label>
-                                <div class="control col-sm-9">
-                                    <input ng-model="obj.skin" type="text" id="skin" class="form-control" name="skin" size="15" placeholder="skin">
-                                </div>
-                            </div>
+                            
+
+
+                             
+
+
+
 
                             <div class="control-group text-right">
                                 <div class="controls">
-                                    <a class="btn btn-primary" ng-click="save()">Guardar</a>
+                                    <a class="btn btn-primary" ng-click="save()" ng-disabled="!outerForm.$valid">Guardar</a>
                                     <a class="btn btn-default" ng-click="plist()">Ir al listado de usuarios</a>
                                     <a class="btn btn-default" ng-click="close()">Cerrar</a>
                                 </div>
                             </div>
-                        </form>
-                        <div ng-show="result != null">    
-                            <div class="alert alert-success" ng-show="result.status == 200">
-                                <h2>Se ha modificado el usuario</h2>
-                                <a ng-href="#/usuario/view/{{id}}">Ver el usuario modificado</a>
+                            </form>        
+                        
+                            <div ng-show="result != null">
+                                <div class="alert alert-success" ng-show="result.status == 200">
+                                    
+                                    <div ng-show="op == 'edit'">
+                                        <h2>Se ha modificado el registro</h2>
+                                        <a ng-href="#/documento/view/{{id}}">Ver el registro modificado</a>
+                                    </div>
+                                    <div ng-show="op == 'new'">
+                                        <h2>Se ha creado el registro con id={{result.message}}</h2>
+                                        <a ng-href="#/documento/view/{{result.message}}">Ver el registro creado</a>
+                                    </div>                        
+                                </div>
+                                <div class="alert alert-danger" ng-show="result.status != 200">
+                                    <div ng-show="op == 'edit'">
+                                        <h2>Error al modificar el documento: no se ha modificado el documento</h2>
+                                        <h3>Código: {{result.status}}</h3>
+                                        <h3>Mensaje: {{result.message}}</h3>                
+                                    </div>
+                                    <div ng-show="op == 'new'">
+                                        <h2>Error al crear el documento: no se ha creado el documento</h2>
+                                        <h3>Código: {{result.status}}</h3>
+                                        <h3>Mensaje: {{result.message}}</h3>                
+                                    </div>
+                                </div>
                             </div>
-                            <div class="alert alert-danger" ng-show="result.status != 200">
-                                <h2>Error al modificar el usuario: no se ha modificado el usuario</h2>
-                                <h3>Código: {{result.status}}</h3>
-                                <h3>Mensaje: {{result.message}}</h3>             
-                            </div>
-                        </div>
                     </div>
                     <div class="panel-footer" style="font-family: Questrial, serif;" ng-include="'js/system/footer.html'"></div>
                 </div>

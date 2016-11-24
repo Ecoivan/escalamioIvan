@@ -27,12 +27,12 @@
  */
 'use strict';
 
-moduloUsuario.controller('UsuarioViewpopController', ['$scope', '$routeParams', 'serverService', '$location', '$uibModalInstance', 'id',
+moduloProducto.controller('ProductoViewpopController', ['$scope', '$routeParams', 'serverService', '$location', '$uibModalInstance', 'id',
     function ($scope, $routeParams, serverService, $location, $uibModalInstance, id) {
         $scope.status = null;
-        $scope.title = "Vista de usuario";
+        $scope.title = "Vista de productos";
         $scope.icon = "fa-file-text-o";
-        $scope.ob = 'usuario';
+        $scope.ob = 'producto';
         $scope.id = id;
         serverService.promise_getOne($scope.ob, $scope.id).then(function (response) {
             if (response.status == 200) {

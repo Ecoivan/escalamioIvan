@@ -27,12 +27,12 @@
  */
 'use strict';
 
-moduloUsuario.controller('UsuarioViewpopController', ['$scope', '$routeParams', 'serverService', '$location', '$uibModalInstance', 'id',
+moduloFactura.controller('FacturaViewpopController', ['$scope', '$routeParams', 'serverService', '$location', '$uibModalInstance', 'id',
     function ($scope, $routeParams, serverService, $location, $uibModalInstance, id) {
         $scope.status = null;
-        $scope.title = "Vista de usuario";
+        $scope.title = "Vista de factura";
         $scope.icon = "fa-file-text-o";
-        $scope.ob = 'usuario';
+        $scope.ob = 'factura';
         $scope.id = id;
         serverService.promise_getOne($scope.ob, $scope.id).then(function (response) {
             if (response.status == 200) {
