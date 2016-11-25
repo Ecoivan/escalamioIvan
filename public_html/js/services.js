@@ -248,11 +248,26 @@ angular.module('Services', [])
                         return false;
                     })
                 },
+                getEdit: function (strParams) {
+                    console.log("get " + this.getAppUrl() + '?' + strParams);
+                    return $http.get(this.getAppUrl() + '?' + strParams).then(function (response) {
+                        if (response.status == 200) {
+                            console.log("get 200");
+                            return response;
+                        } else {
+                            console.log("get <>200");
+                            return false;
+                        }
+                    }, function errorCallback(response, status) {
+                        console.log("get error" + status);
+                        return false;
+                    })
+                },
                 //----------------------
                 put: function (strParams, jsonfile) {
                     $http.defaults.headers.put['Content-Type'] = 'application/json;charset=utf-8';
                     console.log("put " + this.getAppUrl() + '?' + strParams);
-                    return $http.put(this.getAppUrl() + '?' + strParams + '&db=scroom&debug=true&XDEBUG_SESSION_START=netbeans-xdebug#/', jsonfile).then(function (response) {
+                    return $http.put(this.getAppUrl() + '?' + strParams, jsonfile).then(function (response) {
                         if (response.status == 200) {
                             console.log("put 200");
                             return response;

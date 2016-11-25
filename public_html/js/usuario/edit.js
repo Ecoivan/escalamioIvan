@@ -39,33 +39,21 @@ moduloUsuario.controller('UsuarioEditController', ['$scope', '$uibModal', '$rout
         $scope.icon = "fa-file-text-o";
         if (sharedSpaceService.getFase() == 0) {
             //if we aren't returning from a foreign key election request data from server
-            serverService.get('ob=usuario&page=1&rpp=100&filter[]=id,equa,' + $scope.id).then(function (result) {
+            serverService.getEdit('ob=usuario&op=get&id=' + $scope.id).then(function (result) {
                 if (result) {
                     if (result.status == 200) {
                         //pick data from server
                         $scope.queryregisters = result.data.message.queryregisters;
                         $scope.totalregisters = result.data.message.totalregisters;
-                        $scope.objRaw = result.data.message.rows[0];
+                        $scope.objRaw = result.data.message;
                         //data conversión from server json-------------------------------                                                
-                        $scope.obj.alta = serverService.date_toDate2($scope.objRaw.alta);
-                        $scope.obj.cambio = serverService.date_toDate2($scope.objRaw.cambio);
-                        if ($scope.objRaw.portada)
-                            $scope.obj.portada = true;
-                        else
-                            $scope.obj.portada = false;
-                        if ($scope.objRaw.destacado)
-                            $scope.obj.destacado = true;
-                        else
-                            $scope.obj.destacado = false;
-                        if ($scope.objRaw.publicado)
-                            $scope.obj.publicado = true;
-                        else
-                            $scope.obj.publicado = false;
-                        $scope.obj.titulo = $scope.objRaw.titulo;
-                        $scope.obj.contenido = $scope.objRaw.titulo;
-                        $scope.obj.hits = $scope.objRaw.hits;
-                        $scope.obj.id_usuario = $scope.objRaw.id_usuario;
-                        $scope.obj.id_tipodocumento = $scope.objRaw.id_tipodocumento;
+                        
+                        $scope.obj.nombre = $scope.objRaw.nombre;
+                        $scope.obj.apellido1 = $scope.objRaw.apellido1;
+                        $scope.obj.apellido2 = $scope.objRaw.apellido2;
+                        $scope.obj.login = $scope.objRaw.login;
+                        $scope.obj.obj_tipo_usuario = $scope.objRaw.obj_tipo_usuario;
+                        $scope.obj.password = $scope.objRaw.password;
                         $scope.obj.id = $scope.objRaw.id;
                     }
                 } else {
@@ -179,7 +167,7 @@ moduloUsuario.controller('UsuarioEditController', ['$scope', '$uibModal', '$rout
 
             console.log($scope.obj);
 
-            serverService.put('ob=documento&id=' + $scope.obj.id, JSON.stringify($scope.obj)).then(function (result) {
+            serverService.put('ob=usuario&id=' + $scope.obj.id, JSON.stringify($scope.obj)).then(function (result) {
                 if (result) {
                     if (result.status == 200) {
                         $scope.result = result;
